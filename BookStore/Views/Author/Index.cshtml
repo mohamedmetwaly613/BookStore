@@ -1,0 +1,48 @@
+﻿@model IEnumerable<BookStore.Models.Author>
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="container row p-0 m-0">
+    <div class="col-9">
+        <h2 class="text-info">Authors</h2>
+    </div>
+    <div class="col-3">
+        <a asp-action="Create" class="btn btn-info form-control text-white">Create New Author</a>
+    </div>
+    <table class="table table-striped col-12 border p-3 mt-3 table-hover">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FullName)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+             {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FullName)
+                    </td>
+                    <td>
+                        <button class="btn btn-success btn-sm">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id, style = "color:white" })
+                        </button>
+                        <button class="btn btn-danger btn-sm">
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id, style = "color:white" })
+                        </button>
+                    </td>
+                </tr>
+             }
+        </tbody>
+    </table>
+</div>
